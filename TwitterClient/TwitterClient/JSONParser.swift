@@ -22,6 +22,7 @@ class JSONParser{
             
             return tweetJSONData
             
+            
         }catch {
             fatalError("Failed to create data from tweetJSONPath")
         }
