@@ -35,6 +35,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource {
             
             if(success){
                 guard let tweets = tweets else { fatalError("Tweets came back nil") }
+//                Tweets.shared = removeAll
                 for tweet in tweets{
                     print(tweet.text)
                     TweetList.shared.add(tweet: tweet)
