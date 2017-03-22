@@ -82,6 +82,7 @@
 		DB9E55C91E81BD6E0015E40F /* Controller  */ = {
 			isa = PBXGroup;
 			children = (
+				DBB5C4351E8318FC00EC0F8E /* TweetDetailViewController.swift */,
 				DB94340F1E80781F000C5B7F /* HomeTimelineViewController.swift */,
 			);
 			name = "Controller ";
@@ -92,7 +93,6 @@
 			children = (
 				DB9433FE1E803F3E000C5B7F /* LaunchScreen.storyboard */,
 				DB9433F91E803F3E000C5B7F /* Main.storyboard */,
-				DBB5C4351E8318FC00EC0F8E /* TweetDetailViewController.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";

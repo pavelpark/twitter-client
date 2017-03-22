@@ -53,10 +53,12 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
             
             if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
                 let selectedTweet = self.allTweets[selectedIndex]
-                
+                print ("............................")
+                print (selectedTweet)
                 guard let destinationController = segue.destination as? TweetDetailViewController else { return }
                 
                 destinationController.tweet = selectedTweet
+                
             }
             
             

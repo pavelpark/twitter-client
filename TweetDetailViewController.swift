@@ -17,7 +17,8 @@ class TweetDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
- //       tweetText.text = self.tweet.text
+        self.tweetText.text = self.tweet.text
+        self.userTweet.text = self.tweet.user?.name ?? "Unkonwn"
         print(self.tweet.user?.name ?? "Unknown")
         print(self.tweet.text)
         
