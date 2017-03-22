@@ -17,7 +17,7 @@ typealias TweetsCallback = ([Tweet]?)->()
 class API {
     static let shared = API()
     
-    var account : ACAccount?
+    var account: ACAccount?
     
     private func login(callback : @escaping AcccountCallback) {
         
@@ -47,7 +47,7 @@ class API {
 //    getting the account of the user^
     private func getOAuthUser(callback: @escaping UserCallback){
         
-        let url = URL(string: "http://api.twitter.com/1.1/account/verify_credentials.json")
+        let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
         
         if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil){
             
@@ -67,32 +67,75 @@ class API {
                 
                 switch response.statusCode {
                 case 200...299:
-                    if let userJSON = try! JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
-                        let user = User(json: userJSON)
-                        callback(user)
-                        
+                    JSONParser.tweetJSONParser(data: data, callback: { (success, tweets) in
+                    if success {
+                    callback(tweets)
                     }
-//                    update in lab^ abstract out the parser json
-                default:
+                    })
+                case 300...399:
+                    print("Client Error \(response.statusCode)")
+                case 400...499:
+                    print("Client Error \(response.statusCode)")
+                case 500...599:
+                    print("Client Error \(response.statusCode)")
+            default:
                     print("Error: response came back with satusCode: \(response.statusCode) ")
+                    callback(nil)
+            }
+        })
+    }
+}
+
+       //    Sending the crodentials to varify with twitter that we have the account verified^
+    
+    private func updateTimeLine(callback: @escaping TweetsCallback){
+        
+        let url = URL(string: "https://api.twitter.com/1.1/statuses/home_timeline.json")
+        
+        if let request = SLRequest(forServiceType: SLServiceTypeTwitter, requestMethod: .GET, url: url, parameters: nil) {
+            
+            request.account = self.account
+            
+            request.perform(handler: { (data, response, error) in
+                
+                if let error = error {
+                    print("Error: error requestion user's home timeline - \(error.localizedDescription)")
+                    callback(nil)
+                    return
+                }
+                guard let response = response else { callback(nil); return}
+                guard let data = data else {callback(nil); return }
+                
+                if response.statusCode >= 200 && response.statusCode < 300 {
+                    
+                    JSONParser.tweetsFrom(data: data, callback: { (success, tweets) in
+                        if success {
+                            callback(tweets)
+                        }
+                    })
+                    
+                }else {
+                    print("Something else went tarribly wrong! We have a status coe outside 200-299.")
                     callback(nil)
                 }
             })
-            
         }
-    }
-//    Sending the crodentials to varify with twitter that we have the account verified^
-    
-    private func updateTimeLine(callback: TweetsCallback){
-        
-        
     }
 //    fetch all the tweets^
     
-    func getTweets(callback: TweetsCallback){
-        
-        
+    func getTweets(callback: @escaping TweetsCallback){
+        if self.account == nil {
+            login(callback: { (account) in
+                if let account = account{
+                    self.account = account
+                    self.updateTimeLine(callback: { (tweets) in
+                        callback(tweets)
+                    })
+                }
+            })
+            
+        } else {
+            self.updateTimeLine(callback: callback)
+        }
     }
-    
-    
 }
