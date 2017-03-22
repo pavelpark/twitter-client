@@ -23,32 +23,59 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
             self.allTweets.append(tweet)
         }
     }
-
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var allTweets = [Tweet]() {
         didSet{
             self.tableView.reloadData()
         }
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.title = "Timeline"
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
         
         updateTimeLine()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        if segue.identifier == "showDetailSegue" {
+            //do some things
+            
+            if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
+                let selectedTweet = self.allTweets[selectedIndex]
+                
+                guard let destinationController = segue.destination as? TweetDetailViewController else { return }
+                
+                destinationController.tweet = selectedTweet
+            }
+            
+            
+            
+        }
+        
+    }
+    
     func updateTimeLine(){
+        
+        self.activityIndicator.startAnimating() //start here
+        
         API.shared.getTweets { (tweets) in
             OperationQueue.main.addOperation {
                 self.allTweets = tweets ?? []
+                self.activityIndicator.stopAnimating() //stop here
             }
         }
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection
         section: Int) -> Int {
         return allTweets.count
@@ -58,15 +85,16 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
             
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        
-        let currentTweet = allTweets[indexPath.row]
-        
-        cell.textLabel?.text = currentTweet.text
-        cell.detailTextLabel?.text = currentTweet.user?.name
-        
-        return cell
+        if let cell = cell as? TweetCell{
+            cell.tweetText.text = allTweets[indexPath.row].text
+       
+//        let currentTweet = allTweets[indexPath.row]
+//        cell.textLabel?.text = currentTweet.text
+       }
+         return cell
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-    }
+    
+    //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+       // print(indexPath.row)
+    //}
 }
