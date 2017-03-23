@@ -9,7 +9,8 @@
 import UIKit
 
 class TweetDetailViewController: UIViewController {
-
+    
+    @IBOutlet weak var reTweets: UILabel!
     @IBOutlet weak var tweetText: UILabel!
     @IBOutlet weak var userTweet: UILabel!
     var tweet : Tweet!
@@ -19,6 +20,7 @@ class TweetDetailViewController: UIViewController {
 
         self.tweetText.text = self.tweet.text
         self.userTweet.text = self.tweet.user?.name ?? "Unkonwn"
+        self.reTweets.text = ("Retweeted: \(self.tweet.retweeted)")
         print(self.tweet.user?.name ?? "Unknown")
         print(self.tweet.text)
         

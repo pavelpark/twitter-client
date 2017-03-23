@@ -104,11 +104,20 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Retweets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cMU-8N-mxB">
+                                        <rect key="frame" x="8" y="65" width="367" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="9IT-Hu-1Xh" firstAttribute="top" secondItem="c8x-8w-zKk" secondAttribute="top" constant="8" id="BwZ-CL-pct"/>
+                                    <constraint firstItem="cMU-8N-mxB" firstAttribute="top" secondItem="TkJ-Do-0Sb" secondAttribute="bottom" constant="7.5" id="Lj0-Jm-b9U"/>
+                                    <constraint firstItem="cMU-8N-mxB" firstAttribute="leading" secondItem="c8x-8w-zKk" secondAttribute="leading" constant="8" id="bWQ-ud-OsX"/>
                                     <constraint firstItem="TkJ-Do-0Sb" firstAttribute="top" secondItem="9IT-Hu-1Xh" secondAttribute="bottom" constant="8" id="dft-Ut-Ekx"/>
+                                    <constraint firstAttribute="trailing" secondItem="cMU-8N-mxB" secondAttribute="trailing" id="eue-PE-Fye"/>
                                     <constraint firstItem="9IT-Hu-1Xh" firstAttribute="leading" secondItem="c8x-8w-zKk" secondAttribute="leading" constant="8" id="hRc-12-6YW"/>
                                     <constraint firstAttribute="trailing" secondItem="TkJ-Do-0Sb" secondAttribute="trailing" constant="8" id="mNQ-nI-cnW"/>
                                     <constraint firstItem="TkJ-Do-0Sb" firstAttribute="leading" secondItem="c8x-8w-zKk" secondAttribute="leading" constant="8" id="qq4-Bf-FWw"/>
@@ -132,6 +141,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="reTweets" destination="cMU-8N-mxB" id="3g3-G0-NrW"/>
                         <outlet property="tweetText" destination="TkJ-Do-0Sb" id="7I8-WL-NxL"/>
                         <outlet property="userTweet" destination="9IT-Hu-1Xh" id="BOp-Dl-LAM"/>
                     </connections>
