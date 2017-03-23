@@ -8,10 +8,23 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
 
+
+
+class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var profileImg: UIImageView!
+    
+    @IBOutlet weak var nameProfile: UILabel!
+
+    @IBOutlet weak var profileFollowers: UILabel!
+    
+    @IBOutlet weak var profileLocation: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
 
            }
    
