@@ -36,7 +36,7 @@ class API {
                 if let account = accountStore.accounts(with: accountType).first as? ACAccount{
                     callback(account)
                 }
-//                Refactor this for the lab to have many account ^
+                //                Refactor this for the lab to have many account ^
             } else {
                 print("The user did not allow access to their account")
                 callback(nil)
@@ -44,7 +44,7 @@ class API {
         }
     }
     
-//    getting the account of the user^
+    //    getting the account of the user^
     private func getOAuthUser(callback: @escaping UserCallback){
         
         let url = URL(string: "https://api.twitter.com/1.1/account/verify_credentials.json")
@@ -68,9 +68,9 @@ class API {
                 switch response.statusCode {
                 case 200...299:
                     JSONParser.tweetJSONParser(data: data, callback: { (success, tweets) in
-                    if success {
-                    callback(tweets)
-                    }
+                        if success {
+                            callback(tweets)
+                        }
                     })
                 case 300...399:
                     print("Client Error \(response.statusCode)")
@@ -78,15 +78,15 @@ class API {
                     print("Client Error \(response.statusCode)")
                 case 500...599:
                     print("Client Error \(response.statusCode)")
-            default:
+                default:
                     print("Error: response came back with satusCode: \(response.statusCode) ")
                     callback(nil)
-            }
-        })
+                }
+            })
+        }
     }
-}
-
-       //    Sending the crodentials to varify with twitter that we have the account verified^
+    
+    //    Sending the crodentials to varify with twitter that we have the account verified^
     
     private func updateTimeLine(callback: @escaping TweetsCallback){
         
@@ -121,7 +121,7 @@ class API {
             })
         }
     }
-//    fetch all the tweets^
+    //    fetch all the tweets^
     
     func getTweets(callback: @escaping TweetsCallback){
         if self.account == nil {
