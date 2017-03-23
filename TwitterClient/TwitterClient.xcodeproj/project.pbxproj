@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB7257F61E835F65006884E5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7257F51E835F65006884E5 /* ProfileViewController.swift */; };
 		DB9433F61E803F3E000C5B7F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9433F51E803F3E000C5B7F /* AppDelegate.swift */; };
 		DB9433FB1E803F3E000C5B7F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DB9433F91E803F3E000C5B7F /* Main.storyboard */; };
 		DB9433FD1E803F3E000C5B7F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB9433FC1E803F3E000C5B7F /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB7257F51E835F65006884E5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = ../../ProfileViewController.swift; sourceTree = "<group>"; };
 		DB9433F21E803F3E000C5B7F /* TwitterClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TwitterClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB9433F51E803F3E000C5B7F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB9433FA1E803F3E000C5B7F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		DB9E55C91E81BD6E0015E40F /* Controller  */ = {
 			isa = PBXGroup;
 			children = (
+				DB7257F51E835F65006884E5 /* ProfileViewController.swift */,
 				DBB5C4351E8318FC00EC0F8E /* TweetDetailViewController.swift */,
 				DB94340F1E80781F000C5B7F /* HomeTimelineViewController.swift */,
 			);
@@ -189,6 +192,7 @@
 				DB94340A1E8053EF000C5B7F /* Tweet.swift in Sources */,
 				DB9433F61E803F3E000C5B7F /* AppDelegate.swift in Sources */,
 				DBB5C4361E8318FC00EC0F8E /* TweetDetailViewController.swift in Sources */,
+				DB7257F61E835F65006884E5 /* ProfileViewController.swift in Sources */,
 				DB9E55C81E819E970015E40F /* API.swift in Sources */,
 				DB9434101E80781F000C5B7F /* HomeTimelineViewController.swift in Sources */,
 			);

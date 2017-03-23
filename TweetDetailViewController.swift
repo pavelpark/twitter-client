@@ -15,7 +15,9 @@ class TweetDetailViewController: UIViewController {
     @IBOutlet weak var userTweet: UILabel!
     var tweet : Tweet!
     
+    
     override func viewDidLoad() {
+        self.navigationItem.rightBarButtonItem?.isEnabled = true
         super.viewDidLoad()
 
         self.tweetText.text = self.tweet.text
@@ -26,4 +28,6 @@ class TweetDetailViewController: UIViewController {
         
     }
     
+    @IBAction func tapButton(_ sender: Any) {
+    }
 }
