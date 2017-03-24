@@ -19,6 +19,9 @@ class API {
     
     var account: ACAccount?
     
+    var currentUser: User?
+    
+    
     private func login(callback : @escaping AcccountCallback) {
         
         let accountStore = ACAccountStore()
@@ -67,9 +70,11 @@ class API {
                 
                 switch response.statusCode {
                 case 200...299:
-                    JSONParser.tweetJSONParser(data: data, callback: { (success, tweets) in
+                    JSONParser.tweetJSONParser(data: data, callback: { (success, user) in
                         if success {
-                            callback(tweets)
+                            self.currentUser = user
+                            print("Current User has been set to: \(self.currentUser?.name)")
+                            callback(user)
                         }
                     })
                 case 300...399:
@@ -146,4 +151,9 @@ class API {
             self.updateTimeLine(url: urlString) { (tweets) in callback (tweets)
             }
         }
+    func getUserInfo(callback: @escaping UserCallback) {
+        self.getOAuthUser { (user) in
+            callback(user)
+        }
+    }
 }
