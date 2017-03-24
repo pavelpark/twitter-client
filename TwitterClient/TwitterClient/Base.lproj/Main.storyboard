@@ -157,18 +157,10 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Selected Tweet" id="Li5-Ls-IGZ">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="bus-RD-Gsp">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="EcD-vw-6J6">
-                                <rect key="frame" x="276" y="5" width="83" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Profile">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="tapButton:" destination="3Uo-xe-Lo4" eventType="touchUpInside" id="3aj-HW-fC7"/>
-                                </connections>
-                            </button>
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Feed" id="Tae-W3-3a6">
+                            <connections>
+                                <segue destination="0hj-HI-z7M" kind="show" identifier="UserTimeLineViewController" id="w8d-je-mxn"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -182,10 +174,10 @@
             </objects>
             <point key="canvasLocation" x="2156" y="46.326836581709152"/>
         </scene>
-        <!--View Controller-->
+        <!--User Time Line View Controller-->
         <scene sceneID="cWp-iI-NKY">
             <objects>
-                <viewController id="0hj-HI-z7M" sceneMemberID="viewController">
+                <viewController id="0hj-HI-z7M" customClass="UserTimeLineViewController" customModule="TwitterClient" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="r6e-Bl-ue8"/>
                         <viewControllerLayoutGuide type="bottom" id="xmo-qT-RsL"/>
@@ -193,8 +185,33 @@
                     <view key="view" contentMode="scaleToFill" id="trh-bB-A8k">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ze3-9V-PBn">
+                                <rect key="frame" x="0.0" y="64" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="JzO-e0-0QT">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JzO-e0-0QT" id="KY6-nZ-AJN">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" red="0.72621715070000004" green="0.91064023969999996" blue="0.9994404912" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="ze3-9V-PBn" firstAttribute="leading" secondItem="trh-bB-A8k" secondAttribute="leading" id="NXP-DH-bZb"/>
+                            <constraint firstAttribute="trailing" secondItem="ze3-9V-PBn" secondAttribute="trailing" id="Yfb-uK-mdX"/>
+                            <constraint firstItem="ze3-9V-PBn" firstAttribute="top" secondItem="r6e-Bl-ue8" secondAttribute="bottom" id="gMj-A9-Yt1"/>
+                            <constraint firstItem="xmo-qT-RsL" firstAttribute="top" secondItem="ze3-9V-PBn" secondAttribute="bottom" id="mvg-4k-Q9i"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableViewFeed" destination="ze3-9V-PBn" id="GTB-q9-HcW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syb-UC-B8E" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
