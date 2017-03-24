@@ -39,6 +39,7 @@ class ProfileViewController: UIViewController {
                 UIImage.fetchImageWith(urlString, callback: { (image) in
                     self.profileImg.image = image
                     self.profileFollowers.text = ("Followers: \(self.user.followerCount)")
+                    self.profileLocation.text = self.user.location == "" ? "unknown" : self.user.location
                     
                 })
                 
