@@ -37,6 +37,10 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
         
         self.navigationItem.title = "Timeline"
         
+        let tweetNib = UINib(nibName: "TweetNibCell", bundle: nil)
+        
+        self.tableView.register(tweetNib, forCellReuseIdentifier: TweetNibCell.identifier)
+        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.estimatedRowHeight = 50
@@ -48,7 +52,7 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         
-        if segue.identifier == "showDetailSegue" {
+        if segue.identifier == TweetDetailViewController.identifier {
             //do some things
             
             if let selectedIndex = self.tableView.indexPathForSelectedRow?.row {
@@ -61,10 +65,17 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
             }
             
             
+        } else if segue.identifier == ProfileViewController.identifier {
             
-        }
+            guard let destinationController = segue.destination as? ProfileViewController else { return }
+            
+            
+         }
+        
         
     }
+    
+
     
     func updateTimeLine(){
         
@@ -84,18 +95,20 @@ class HomeTimelineViewController: UIViewController, UITableViewDataSource, UITab
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: TweetNibCell.identifier, for: indexPath) as! TweetNibCell
         
-        if let cell = cell as? TweetCell{
-            cell.tweetText.text = allTweets[indexPath.row].text
+        if let cell = cell as? TweetNibCell{
+            cell.tweetLabel.text = allTweets[indexPath.row].text
        
-//        let currentTweet = allTweets[indexPath.row]
-//        cell.textLabel?.text = currentTweet.text
+            
+            let currentTweet = allTweets[indexPath.row]
+            cell.tweet = currentTweet
        }
          return cell
     }
     
-    //func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       // print(indexPath.row)
-    //}
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       self.performSegue(withIdentifier: TweetDetailViewController.identifier, sender: nil)
+    }
 }

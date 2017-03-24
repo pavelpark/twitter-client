@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TweetNibCell" rowHeight="104" id="KGk-i7-Jjw" customClass="TweetNibCell" customModule="TwitterClient" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="403" height="104"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="403" height="103"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c1x-Ds-h0b">
+                        <rect key="frame" x="0.0" y="9" width="85" height="85"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="85" id="JhX-TI-gxn"/>
+                            <constraint firstAttribute="width" constant="85" id="xU8-Lj-Z4O"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLk-be-LTc">
+                        <rect key="frame" x="93" y="4" width="104" height="26.5"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UwU-qz-r7f">
+                        <rect key="frame" x="93" y="38" width="302" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="c1x-Ds-h0b" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4eX-7L-7Kf"/>
+                    <constraint firstItem="UwU-qz-r7f" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="9i2-n3-Tvb"/>
+                    <constraint firstItem="c1x-Ds-h0b" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Aoz-Zv-Gpg"/>
+                    <constraint firstItem="UwU-qz-r7f" firstAttribute="top" secondItem="eLk-be-LTc" secondAttribute="bottom" constant="7.5" id="JTA-sB-GhZ"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="UwU-qz-r7f" secondAttribute="bottom" constant="36.5" id="PDj-gU-bf1"/>
+                    <constraint firstItem="eLk-be-LTc" firstAttribute="leading" secondItem="c1x-Ds-h0b" secondAttribute="trailing" constant="8" id="Wy8-9x-7MS"/>
+                    <constraint firstItem="UwU-qz-r7f" firstAttribute="leading" secondItem="c1x-Ds-h0b" secondAttribute="trailing" constant="8" id="bVq-1b-GdB"/>
+                    <constraint firstItem="eLk-be-LTc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="bs1-fh-5Fz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="tweetLabel" destination="UwU-qz-r7f" id="Uzr-mA-q6Y"/>
+                <outlet property="userImageView" destination="c1x-Ds-h0b" id="c4U-UD-jBX"/>
+                <outlet property="userNameLabel" destination="eLk-be-LTc" id="dS4-A1-StD"/>
+            </connections>
+            <point key="canvasLocation" x="35.5" y="157"/>
+        </tableViewCell>
+    </objects>
+</document>
